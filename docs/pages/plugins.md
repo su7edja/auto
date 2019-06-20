@@ -4,17 +4,18 @@
 
 Current official plugins:
 
-- chrome - publish code to Chrome Web Store
-- conventional-commits - parse conventional commit messages for version bumps
-- jira - Include jira story links in the changelog
-- git-tag - Manage your projects version through just a git tag
-- npm - publish code to npm (DEFAULT)
-- omit-commits - Ignore commits made by certain accounts
-- omit-release-notes - Ignore release notes in PRs made by certain accounts
-- released - Add a `released` label to published PRs, comment with the version it's included in and comment on the issues the PR closes
-- slack - post release notes to slack
-- twitter - post release notes to twitter
-- upload-assets - add extra assets to the release
+- [chrome](../../plugins/chrome/README.md) - publish code to Chrome Web Store
+- [conventional-commits](../../plugins/conventional-commits/README.md) - parse conventional commit messages for version bumps
+- [jira](../../plugins/jira/README.md) - Include jira story links in the changelog
+- [git-tag](../../plugins/git-tag/README.md) - Manage your projects version through just a git tag
+- [npm](../../plugins/npm/README.md) - publish code to npm (DEFAULT)
+- [omit-commits](../../plugins/omit-commits/README.md) - Ignore commits made by certain accounts
+- [omit-release-notes](../../plugins/omit-release-notes/README.md) - Ignore release notes in PRs made by certain accounts
+- [released](../../plugins/released/README.md) - Add a `released` label to published PRs, comment with the version it's in[cluded in and comment on the issues the PR closes
+- [s3](../../plugins/released/README.md) - post your built artifacts to s3
+- [slack](../../plugins/slack/README.md) - post release notes to slack
+- [twitter](../../plugins/twitter/README.md) - post release notes to twitter
+- [upload-assets](../../plugins/upload-assets/README.md) - add extra assets to the release
 
 ## Using Plugins
 
