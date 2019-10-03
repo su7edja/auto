@@ -243,6 +243,21 @@ describe('github', () => {
   });
 
   describe('createComment', () => {
+    test('should create comment under default context if no context provided', async () => {
+      const gh = new Git(options);
+
+      listComments.mockReturnValueOnce({ data: [] });
+      await gh.createComment('Some long thing', 22, );
+
+      const expectedParams = {
+        body: '<!-- GITHUB_RELEASE COMMENT: default -->\nSome long thing',
+        issue_number: 22,
+        owner: 'Adam Dierkens',
+        repo: 'test'
+      };
+      expect(createComment).toHaveBeenCalledWith(expectedParams);
+    });
+
     test('should post comment if none exists', async () => {
       const gh = new Git(options);
 
@@ -306,9 +321,46 @@ describe('github', () => {
       expect(deleteComment).toHaveBeenCalled();
       expect(deleteComment.mock.calls[0][0].comment_id).toBe(1000);
     });
+
+    test('should delete comment under default context if no context provided', async () => {
+      const gh = new Git(options);
+
+      listComments.mockReturnValueOnce({
+        data: [
+          {
+            body: '<!-- GITHUB_RELEASE COMMENT: default -->\nSome cool message',
+            id: 1337
+          }
+        ]
+      });
+      await gh.deleteComment(22);
+
+      const expectedParams = {
+        owner: 'Adam Dierkens',
+        repo: 'test',
+        comment_id: 1337
+      };
+      expect(deleteComment).toHaveBeenCalledWith(expectedParams);
+    });
   });
 
   describe('editComment', () => {
+    test('should post comment under default context if no context provided', async () => {
+      const gh = new Git(options);
+
+      listComments.mockReturnValue({ data: [] });
+      await gh.editComment('Some long thing', 22);
+
+      const expectedParams = {
+        body: '<!-- GITHUB_RELEASE COMMENT: default -->\nSome long thing',
+        issue_number: 22,
+        owner: 'Adam Dierkens',
+        repo: 'test'
+      };
+      expect(createComment).toHaveBeenCalledWith(expectedParams);
+      expect(updateComment).not.toHaveBeenCalled();
+    });
+
     test('should post comment if none exists', async () => {
       const gh = new Git(options);
 
